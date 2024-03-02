@@ -4,12 +4,11 @@ export let Appcontext:any=createContext(null);
 
 function Appcontextprovider({children}:{children:React.ReactNode}){
   
-    const [token,setToken]=useState<string | null>(typeof window === 'undefined' ? null : localStorage.getItem('hackathontoken')===null?null:JSON.parse(localStorage.getItem('token')!));
+    const [token,setToken]=useState<string | null>(typeof window === 'undefined' ? null : localStorage.getItem('hackathontoken')===null?null:JSON.parse(localStorage.getItem('hackathontoken')!));
     const [email,setEmail]=useState<string | null>(typeof window === 'undefined' ? null : localStorage.getItem('hackathonemail')===null?null:JSON.parse(localStorage.getItem('hackathonemail')!) );
 
     const setTokenHandler=(token:string,email:string)=>{
         setToken(token);
-        if(typeof window === 'undefined') return;
         localStorage.setItem('hackathontoken',JSON.stringify(token));
         setEmail(email);
         localStorage.setItem('hackathonemail',JSON.stringify(email));
@@ -18,7 +17,6 @@ function Appcontextprovider({children}:{children:React.ReactNode}){
     
     const removeTokenHandler=()=>{
         setToken(null);
-        if(typeof window === 'undefined') return;
         localStorage.removeItem('hackathontoken');
         setEmail(null);
         localStorage.removeItem('hackathonemail');
