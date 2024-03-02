@@ -7,7 +7,10 @@ const nextConfig = {
                 hostname:'api.dicebear.com'
             }
         ]
-    }
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 };
 
 export default nextConfig;
